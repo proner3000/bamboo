@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --bamboo: #2C5530;
+  --bamboo-mid: #3D7043;
+  --bamboo-light: #8FAF7E;
+  --bamboo-pale: #E8F5E0;
+  --bamboo-xpale: #F4FAF0;
+  --ink: #141A12;
+  --ink-soft: #3A4238;
+  --ink-muted: #6B7A68;
+  --cream: #F7F9F4;
+  --white: #FFFFFF;
+  --node-border: #C8DFC0;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+}
+
+/* Global Normalization */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.5; }
+a { text-align: none; color: inherit; }
+
+/* Global Navigation Component */
+.brand-group { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand-text { font-family: 'Instrument Serif', serif; font-size: 1.3rem; color: var(--bamboo); }
+.nav-actions { display: flex; gap: 1.75rem; align-items: center; }
+.nav-actions a { font-size: 0.875rem; color: var(--ink-soft); text-decoration: none; transition: color 0.2s; }
+.nav-actions a:hover { color: var(--bamboo); }
+.cta-pill { background: var(--bamboo); color: var(--white) !important; padding: 0.45rem 1.1rem; border-radius: var(--radius-sm); font-size: 0.82rem; font-weight: 500; }
+
+/* Reusable Structure Containers */
+.container { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
+.header-block { margin-bottom: 2.5rem; }
+.lbl-mono { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--bamboo); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+.title-serif { font-family: 'Instrument Serif', serif; font-size: 2.5rem; color: var(--ink); }
+
+/* Unified Footer Component */
+.bamboo-footer { background: var(--ink); padding: 3rem 2rem; text-align: center; margin-top: auto; }
+.footer-text { font-size: 0.75rem; color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; margin-top: 1rem; }
