@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Node Not Found · Bamboo Coding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/bamboo.css">
+  <script src="/jsFiles/layout_Wrapper.js" defer></script>
+  <style>
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .error-view {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem;
+    }
+    .error-inner {
+      max-width: 620px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .error-terminal {
+      background: var(--ink);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #2A3528;
+      box-shadow: 0 12px 40px rgba(20,26,18,0.16);
+      margin-bottom: 2.5rem;
+      text-align: left;
+    }
+    .terminal-bar {
+      background: #1E2A1C;
+      padding: 0.65rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .dot { width: 11px; height: 11px; border-radius: 50%; }
+    .d-red    { background: #FF5F57; }
+    .d-yellow { background: #FFBD2E; }
+    .d-green  { background: #28CA41; }
+    .terminal-path {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: #5A7558;
+      margin-left: 0.5rem;
+    }
+    .terminal-body {
+      padding: 1.4rem 1.5rem 1.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      line-height: 1.9;
+    }
+    .t-m { color: #4A6448; }
+    .t-g { color: #7EC87A; }
+    .t-y { color: #E5C07B; }
+    .t-c { color: #56B6C2; }
+    .t-r { color: #E06C75; }
+    .t-w { color: #D4D4D4; }
+
+    .cursor {
+      display: inline-block;
+      width: 8px; height: 14px;
+      background: #7EC87A;
+      vertical-align: -2px;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    .error-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--bamboo);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.6rem;
+    }
+    .error-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.4rem;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+    .error-title em {
+      color: var(--bamboo);
+      font-style: italic;
+    }
+    .error-desc {
+      color: var(--ink-muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      max-width: 420px;
+      margin: 0 auto 2rem;
+    }
+
+    .error-actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .btn-primary {
+      background: var(--bamboo);
+      color: var(--white);
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--bamboo-mid); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--bamboo);
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      border: 1.5px solid var(--bamboo);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { background: var(--bamboo-pale); }
+
+    .quick-links {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .quick-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      text-decoration: none;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--node-border);
+      border-radius: 4px;
+      background: var(--white);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .quick-link:hover { color: var(--bamboo); border-color: var(--bamboo-light); }
+
+    .stalk-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .divider-line { flex: 1; height: 1px; background: var(--node-border); }
+    .divider-node {
+      width: 30px; height: 30px;
+      border: 1.5px solid var(--bamboo-light);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--white);
+      flex-shrink: 0;
+    }
+
+    /* responsive */
+    @media (max-width: 480px) {
+      .error-title { font-size: 1.9rem; }
+      .terminal-body { font-size: 0.74rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="header"></div>
+
+  <div class="error-view">
+    <div class="error-inner">
+
+      <div class="error-terminal">
+        <div class="terminal-bar">
+          <div class="dot d-red"></div>
+          <div class="dot d-yellow"></div>
+          <div class="dot d-green"></div>
+          <span class="terminal-path">~/bamboo/pages</span>
+        </div>
+        <div class="terminal-body">
+          <div><span class="t-m">$</span> <span class="t-g">bamboo</span> <span class="t-w">navigate --to</span> <span class="t-c" id="badPath">"<span id="pathDisplay">/unknown</span>"</span></div>
+          <div><span class="t-m">→</span> <span class="t-y">resolving</span> <span class="t-w">path…</span></div>
+          <div><span class="t-m">→</span> <span class="t-r">error</span><span class="t-w">: node not found in stalk index</span></div>
+          <div>&nbsp;</div>
+          <div><span class="t-m"># exit code 404</span></div>
+          <div><span class="t-r">SegmentationFault</span><span class="t-w">: segment </span><span class="t-c" id="pathDisplay2">/unknown</span><span class="t-w"> does not exist</span></div>
+          <div>&nbsp;</div>
+          <div><span class="t-m">$</span> <span class="cursor"></span></div>
+        </div>
+      </div>
+
+      <div class="error-code">error · 404</div>
+      <h1 class="error-title">This node<br>doesn't <em>exist</em></h1>
+      <p class="error-desc">
+        The page you're looking for was pruned, moved, or never planted.
+        Head back to the root and grow from there.
+      </p>
+
+      <div class="error-actions">
+        <a href="/index.html" class="btn-primary">← Back to home</a>
+        <a href="/html/tracks.html" class="btn-secondary">Browse tracks →</a>
+      </div>
+
+      <div class="stalk-divider">
+        <div class="divider-line"></div>
+        <div class="divider-node">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <rect x="6" y="1" width="3" height="5" rx="1" fill="#2C5530"/>
+            <rect x="6" y="7.5" width="3" height="5" rx="1" fill="#2C5530"/>
+            <path d="M5 3 Q3 5 4 7" stroke="#8FAF7E" stroke-width="1" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="divider-line"></div>
+      </div>
+
+      <div class="quick-links">
+        <a href="/html/tracks.html"    class="quick-link">tracks.html</a>
+        <a href="/html/lesson.html"    class="quick-link">lesson.html</a>
+        <a href="/html/community.html" class="quick-link">community.html</a>
+        <!-- <a href="dashboard.html" class="quick-link">dashboard.html</a> -->
+      </div>
+
+    </div>
+  </div>
+
+  <div id="footer"></div>
+
+  <script>
+    const path = window.location.pathname || '/unknown';
+    document.getElementById('pathDisplay').textContent  = path;
+    document.getElementById('pathDisplay2').textContent = path;
+  </script>
+
+</body>
+</html>

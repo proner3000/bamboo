@@ -1,0 +1,510 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+
+/* ── Design tokens ─────────────────────────────────────────── */
+/* bambooTheme wins: adds --radius-sm/md/lg which nav.css lacks */
+:root {
+  --bamboo:       #2C5530;
+  --bamboo-mid:   #3D7043;
+  --bamboo-light: #8FAF7E;
+  --bamboo-pale:  #E8F5E0;
+  --bamboo-xpale: #F4FAF0;
+  --ink:          #141A12;
+  --ink-soft:     #3A4238;
+  --ink-muted:    #6B7A68;
+  --cream:        #F7F9F4;
+  --white:        #FFFFFF;
+  --node-border:  #C8DFC0;
+  --radius-sm:    6px;
+  --radius-md:    12px;
+  --radius-lg:    20px;
+}
+
+/* ── Global reset & base ───────────────────────────────────── */
+/* bambooTheme wins on body (line-height); nav.css adds html + overflow-x */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.5;        /* bambooTheme */
+  overflow-x: hidden;      /* nav.css addition */
+}
+
+/* bambooTheme wins: keeps color:inherit; nav.css bottom rule adds text-decoration:none */
+a { text-decoration: none; color: inherit; }
+
+/* ── Navigation ────────────────────────────────────────────── */
+/* nav element — from nav.css (bambooTheme has no bare nav rule) */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--node-border);
+  padding: 0 2.5rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* bambooTheme nav classes (.brand-group pattern) */
+.brand-group  { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand-text   { font-family: 'Instrument Serif', serif; font-size: 1.3rem; color: var(--bamboo); }
+.nav-actions  { display: flex; gap: 1.75rem; align-items: center; }
+.nav-actions a { font-size: 0.875rem; color: var(--ink-soft); text-decoration: none; transition: color 0.2s; }
+.nav-actions a:hover { color: var(--bamboo); }
+.cta-pill {
+  background: var(--bamboo);
+  color: var(--white) !important;
+  padding: 0.45rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+/* nav.css nav classes (.nav-logo pattern) */
+.nav-logo  { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo img { width: 36px; height: 36px; object-fit: contain; }
+.nav-brand { font-family: 'Instrument Serif', serif; font-size: 1.3rem; color: var(--bamboo); letter-spacing: -0.01em; }
+.nav-links { display: flex; gap: 1.75rem; align-items: center; }
+.nav-links a { font-size: 0.875rem; color: var(--ink-soft); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--bamboo); }
+.nav-cta {
+  background: var(--bamboo) !important;
+  color: var(--white) !important;
+  padding: 0.45rem 1.1rem !important;
+  border-radius: 6px !important;
+  font-size: 0.82rem !important;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--bamboo-mid) !important; }
+
+/* bamboo-nav — used in lesson/dashboard pages (bambooTheme) */
+.bamboo-nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--node-border);
+  padding: 0 2.5rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* ── Layout containers ─────────────────────────────────────── */
+/* bambooTheme */
+.container    { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
+.header-block { margin-bottom: 2.5rem; }
+.lbl-mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--bamboo);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+.title-serif { font-family: 'Instrument Serif', serif; font-size: 2.5rem; color: var(--ink); }
+
+/* ── Hero ──────────────────────────────────────────────────── */
+/* nav.css (bambooTheme has no hero rules) */
+.hero {
+  padding: 5.5rem 2.5rem 4.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+.hero-text h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 3.5rem;
+  line-height: 1.08;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  margin-bottom: 1.1rem;
+}
+.hero-text h1 em { color: var(--bamboo); font-style: italic; }
+.hero-text p { color: var(--ink-soft); line-height: 1.7; margin-bottom: 1.9rem; font-size: 1.05rem; }
+.hero-btns  { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+/* ── Buttons ───────────────────────────────────────────────── */
+/* nav.css — bambooTheme has no button rules */
+.btn-primary {
+  background: var(--bamboo);
+  color: var(--white);
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--bamboo-mid); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--bamboo);
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  border: 1.5px solid var(--bamboo);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-secondary:hover { background: var(--bamboo-pale); }
+
+.btn-white {
+  background: var(--white);
+  color: var(--bamboo);
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-white:hover { background: var(--bamboo-pale); }
+
+/* ── Terminal ──────────────────────────────────────────────── */
+/* nav.css */
+.hero-terminal {
+  background: var(--ink);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #2A3528;
+  box-shadow: 0 8px 32px rgba(20,26,18,0.18);
+}
+.terminal-bar {
+  background: #1E2A1C;
+  padding: 0.65rem 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.dot      { width: 11px; height: 11px; border-radius: 50%; }
+.d-red    { background: #FF5F57; }
+.d-yellow { background: #FFBD2E; }
+.d-green  { background: #28CA41; }
+.terminal-path {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: #5A7558;
+  margin-left: 0.5rem;
+}
+.terminal-body {
+  padding: 1.4rem 1.4rem 1.7rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  line-height: 1.85;
+}
+.t-muted  { color: #4A6448; }
+.t-green  { color: #7EC87A; }
+.t-yellow { color: #E5C07B; }
+.t-cyan   { color: #56B6C2; }
+.t-white  { color: #D4D4D4; }
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: #7EC87A;
+  vertical-align: -2px;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ── Section divider ───────────────────────────────────────── */
+/* nav.css */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+.divider-line { flex: 1; height: 1px; background: var(--node-border); }
+.divider-node {
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid var(--bamboo-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  flex-shrink: 0;
+}
+
+/* ── Sections ──────────────────────────────────────────────── */
+/* nav.css */
+.section { max-width: 960px; margin: 0 auto; padding: 3.5rem 2.5rem; }
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--bamboo);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+.section-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 2.1rem;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.55rem;
+}
+.section-sub {
+  color: var(--ink-muted);
+  line-height: 1.65;
+  max-width: 500px;
+  margin-bottom: 2.75rem;
+  font-size: 0.95rem;
+}
+
+/* ── Track cards ───────────────────────────────────────────── */
+/* nav.css */
+.tracks-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+.track-card {
+  background: var(--white);
+  border: 1px solid var(--node-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+.track-card:hover { border-color: var(--bamboo-light); transform: translateY(-2px); }
+.track-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  background: var(--bamboo-pale);
+  color: var(--bamboo);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.05em;
+}
+.track-card h3  { font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: 0.4rem; }
+.track-card p   { font-size: 0.82rem; color: var(--ink-muted); line-height: 1.5; margin-bottom: 1rem; }
+.track-meta     { display: flex; gap: 1rem; font-size: 0.75rem; color: var(--ink-muted); }
+.track-bar      { position: absolute; bottom: 0; left: 0; height: 3px; width: 100%; background: var(--bamboo-pale); }
+.track-bar-fill { height: 100%; background: var(--bamboo); border-radius: 0 2px 0 0; }
+.track-arrow {
+  position: absolute;
+  top: 1.3rem;
+  right: 1.3rem;
+  color: var(--bamboo-light);
+  font-size: 1rem;
+  transition: transform 0.2s, color 0.2s;
+}
+.track-card:hover .track-arrow { transform: translate(2px,-2px); color: var(--bamboo); }
+
+/* ── Stalk lessons ─────────────────────────────────────────── */
+/* nav.css */
+.stalk       { display: flex; gap: 2rem; align-items: flex-start; }
+.stalk-line  { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; padding-top: 4px; }
+.stalk-node {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bamboo-pale);
+  border: 2px solid var(--bamboo-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--bamboo);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.stalk-node.active { background: var(--bamboo); border-color: var(--bamboo); color: var(--white); }
+.stalk-segment     { width: 2px; flex: 1; min-height: 44px; background: var(--node-border); margin: 5px 0; }
+.stalk-content     { flex: 1; padding-bottom: 2.25rem; }
+.stalk-content h3  { font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.35rem; }
+.stalk-content p   { font-size: 0.85rem; color: var(--ink-muted); line-height: 1.6; margin-bottom: 0.8rem; }
+.code-snippet {
+  background: var(--ink);
+  border-radius: 8px;
+  padding: 1.1rem 1.2rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  line-height: 1.8;
+  border: 1px solid #2A3528;
+  margin-top: 0.5rem;
+}
+.lesson-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+.pill {
+  font-size: 0.7rem;
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--bamboo-xpale);
+  color: var(--ink-soft);
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  border: 1px solid var(--node-border);
+}
+
+/* ── Instructors ───────────────────────────────────────────── */
+/* nav.css */
+.instructors-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
+.instructor-card {
+  background: var(--white);
+  border: 1px solid var(--node-border);
+  border-radius: 12px;
+  padding: 1.3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  transition: border-color 0.2s;
+}
+.instructor-card:hover { border-color: var(--bamboo-light); }
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--bamboo-pale);
+  border: 2px solid var(--bamboo-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.2rem;
+  color: var(--bamboo);
+}
+.instructor-info h3   { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 0.15rem; }
+.instructor-info .role { font-size: 0.72rem; color: var(--bamboo); font-family: 'JetBrains Mono', monospace; margin-bottom: 0.4rem; }
+.instructor-info p    { font-size: 0.8rem; color: var(--ink-muted); line-height: 1.5; }
+
+/* ── Community / QR ────────────────────────────────────────── */
+/* nav.css */
+.qr-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.1rem; margin-top: 2rem; }
+.qr-card {
+  background: var(--white);
+  border: 1px solid var(--node-border);
+  border-radius: 12px;
+  padding: 1.4rem 1rem;
+  text-align: center;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.qr-card:hover { border-color: var(--bamboo-light); transform: translateY(-2px); }
+.qr-img {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 0.75rem;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid var(--node-border);
+  object-fit: contain;
+}
+.qr-name { font-size: 0.85rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; }
+.qr-desc { font-size: 0.73rem; color: var(--ink-muted); line-height: 1.4; }
+.qr-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  background: var(--bamboo-pale);
+  color: var(--bamboo);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.04em;
+}
+
+/* ── Stats ─────────────────────────────────────────────────── */
+/* nav.css */
+.stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-bottom: 3rem; }
+.stat-card { background: var(--white); border: 1px solid var(--node-border); border-radius: 10px; padding: 1.2rem; text-align: center; }
+.stat-num  { font-family: 'Instrument Serif', serif; font-size: 2rem; color: var(--bamboo); letter-spacing: -0.02em; margin-bottom: 0.2rem; }
+.stat-lbl  { font-size: 0.75rem; color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; }
+
+/* ── CTA band ──────────────────────────────────────────────── */
+/* nav.css */
+.cta-band { background: var(--bamboo); padding: 4rem 2.5rem; text-align: center; }
+.cta-band h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 2.5rem;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+.cta-band p {
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+/* nav.css footer element + bambooTheme utility classes — both kept */
+footer { background: var(--ink); padding: 2.5rem; text-align: center; }
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 0.6rem;
+}
+.footer-logo img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(80deg) opacity(0.6);
+}
+.footer-brand { font-family: 'Instrument Serif', serif; font-size: 1.1rem; color: #8FAF7E; }
+.footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; }
+.footer-links a {
+  font-size: 0.78rem;
+  color: #4A6448;
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: #8FAF7E; }
+.footer-copy { font-size: 0.72rem; color: #2A3A28; font-family: 'JetBrains Mono', monospace; }
+
+/* bambooTheme footer utilities */
+.bamboo-footer { background: var(--ink); padding: 3rem 2rem; text-align: center; margin-top: auto; }
+.footer-text   { font-size: 0.75rem; color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; margin-top: 1rem; }
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero               { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem; }
+  .hero-text h1       { font-size: 2.5rem; }
+  .tracks-grid        { grid-template-columns: 1fr; }
+  .instructors-grid   { grid-template-columns: 1fr; }
+  .stats-row          { grid-template-columns: repeat(2,1fr); }
+  .qr-grid            { grid-template-columns: 1fr; }
+  nav                 { padding: 0 1.25rem; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .section            { padding: 2.5rem 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor { animation: none; opacity: 1; }
+  *       { transition: none !important; }
+}
