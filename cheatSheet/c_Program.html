@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C Programming Cheatsheet — Bamboo Coding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/bamboo.css">
+<script src="/jsFiles/layout_Wrapper.js" defer></script>
+<style>
+  /* ---- Cheatsheet-specific styling, built on top of the bamboo theme tokens ---- */
+
+  .sheet-head {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.75rem 2.5rem 1.5rem;
+  }
+  .sheet-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--bamboo);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .sheet-head h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2.4rem;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .sheet-head p {
+    color: var(--ink-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 560px;
+  }
+
+  .sheet-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2.5rem 4rem;
+    columns: 2 420px;
+    column-gap: 1.1rem;
+  }
+
+  .node-card {
+    background: var(--white);
+    border: 1px solid var(--node-border);
+    border-radius: var(--radius-md);
+    padding: 1.3rem 1.4rem 1.5rem;
+    margin-bottom: 1.1rem;
+    break-inside: avoid;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .node-card h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--bamboo);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.85rem;
+  }
+  .node-card h2::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background: var(--node-border);
+  }
+
+  .node-card p {
+    font-size: 0.83rem;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin-bottom: 0.55rem;
+  }
+  .node-card p:last-child { margin-bottom: 0; }
+  .node-card strong { color: var(--ink); font-weight: 600; }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    background: var(--bamboo-xpale);
+    color: var(--bamboo-mid);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+  }
+
+  pre {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.76rem;
+    line-height: 1.75;
+    background: var(--ink);
+    border: 1px solid #2A3528;
+    border-radius: 8px;
+    padding: 0.95rem 1.05rem;
+    overflow-x: auto;
+    margin: 0.6rem 0 0.7rem;
+    color: #D4D4D4;
+  }
+  pre .comment { color: #4A6448; }
+  pre .keyword { color: #7EC87A; }
+  pre .type    { color: #E5C07B; }
+  pre .string  { color: #56B6C2; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.5rem 0 0.75rem;
+    font-size: 0.78rem;
+  }
+  th, td {
+    border: 1px solid var(--node-border);
+    padding: 0.4rem 0.55rem;
+    text-align: left;
+    vertical-align: top;
+    color: var(--ink-soft);
+  }
+  th {
+    background: var(--bamboo-xpale);
+    color: var(--bamboo);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+  tr:nth-child(even) td { background: var(--bamboo-xpale); }
+
+  ul { margin: 0.3rem 0 0.6rem 1.1rem; }
+  li { font-size: 0.83rem; color: var(--ink-soft); line-height: 1.55; margin-bottom: 0.2rem; }
+
+  .pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+  }
+
+  .flag {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.12rem 0.45rem;
+    border-radius: 20px;
+    margin-right: 0.4rem;
+  }
+  .flag-tip    { background: var(--bamboo-pale); color: var(--bamboo); }
+  .flag-warn   { background: #FBE9D4; color: #8A5A1E; }
+  .flag-danger { background: #F6D9D6; color: #9A2E27; }
+
+  @media (max-width: 768px) {
+    .sheet-grid { columns: 1 100%; padding: 0 1.5rem 3rem; }
+    .sheet-head { padding: 2rem 1.5rem 1rem; }
+    .pair { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div id="header"></div>
+
+<div class="sheet-head">
+  <div class="sheet-eyebrow">C/C++ Fundamentals · Reference</div>
+  <h1>C Programming Cheatsheet</h1>
+  <p>The whole language, segment by segment. Skim it before an exercise, or keep it open as you build.</p>
+</div>
+
+<div class="sheet-grid">
+
+  <!-- PROGRAM STRUCTURE & BUILD -->
+  <div class="node-card">
+    <h2>Program Structure &amp; Build Pipeline</h2>
+    <pre><span class="keyword">#include</span> <span class="string">&lt;stdio.h&gt;</span>          <span class="comment">// preprocessor: paste header</span>
+<span class="type">int</span> add(<span class="type">int</span> x, <span class="type">int</span> y);      <span class="comment">// forward declaration (prototype)</span>
+
+<span class="type">int</span> main(<span class="type">int</span> argc, <span class="type">char</span> *argv[]) { <span class="comment">// entry point</span>
+    printf(<span class="string">"%d"</span>, add(1, 34));
+    <span class="keyword">return</span> 0;                <span class="comment">// 0 = success, non-zero = error</span>
+}
+
+<span class="type">int</span> add(<span class="type">int</span> x, <span class="type">int</span> y) { <span class="keyword">return</span> x + y; } <span class="comment">// definition</span></pre>
+    <p><strong>Pipeline:</strong> <code>Source(.c)</code> → Preprocessor <code>(gcc -E)</code> → <code>.i</code> → Compiler <code>(gcc -S)</code> → <code>.s</code> → Assembler <code>(gcc -c)</code> → <code>.o</code> → Linker <code>(gcc)</code> → <code>executable</code></p>
+    <p><strong>One-shot build:</strong> <code>gcc file.c -o program</code></p>
+  </div>
+
+  <!-- PREPROCESSOR DIRECTIVES -->
+  <div class="node-card">
+    <h2>Preprocessor Directives</h2>
+    <table>
+      <tr><th>Directive</th><th>Semantics</th></tr>
+      <tr><td><code>#include &lt;x.h&gt;</code></td><td>System header (standard paths)</td></tr>
+      <tr><td><code>#include "x.h"</code></td><td>Local header (current dir first)</td></tr>
+      <tr><td><code>#define NAME val</code></td><td>Object-like macro (text substitution)</td></tr>
+      <tr><td><code>#define f(x) (expr)</code></td><td>Function-like macro (inline substitution)</td></tr>
+      <tr><td><code>#define FLAG</code></td><td>Flag macro, value-less (conditional compilation)</td></tr>
+      <tr><td><code>#ifdef</code> / <code>#ifndef</code></td><td>Conditional guards, close with <code>#endif</code></td></tr>
+    </table>
+    <p><strong>Header guard pattern</strong> — avoids double-inclusion:</p>
+    <pre><span class="keyword">#ifndef</span> CUSTOM_HEADER_H
+<span class="keyword">#define</span> CUSTOM_HEADER_H
+<span class="comment">// declarations / prototypes go here</span>
+<span class="keyword">#endif</span></pre>
+    <p><span class="flag flag-tip">Rule</span>Directives end with a newline, never a semicolon.</p>
+  </div>
+
+  <!-- OBJECTS, VARIABLES, I/O -->
+  <div class="node-card">
+    <h2>Objects, Variables &amp; Core I/O</h2>
+    <p><strong>Object:</strong> region of storage holding a value. <strong>Variable:</strong> a named object.</p>
+    <p><code>sizeof(x)</code> is a <strong>compile-time operator</strong>, not a runtime function call.</p>
+    <p><strong>Standard streams:</strong> <code>stdin</code> (keyboard), <code>stdout</code> (console), <code>stderr</code> (errors → <code>fprintf(stderr, ...)</code>).</p>
+    <pre>printf(<span class="string">"%d %.2f %s\n"</span>, age, gpa, name); <span class="comment">// pass by value</span>
+scanf(<span class="string">"%d %f"</span>, &amp;age, &amp;salary);          <span class="comment">// needs address (&amp;)</span>
+fgets(buf, <span class="keyword">sizeof</span>(buf), stdin);         <span class="comment">// safe full-line read</span></pre>
+    <p><span class="flag flag-danger">Warning</span>Never use <code>gets()</code> (no bounds checking). Use <code>fgets()</code>.</p>
+    <table>
+      <tr><th>Function</th><th>Direction</th><th>Needs &amp;</th><th>Returns</th></tr>
+      <tr><td><code>printf</code></td><td>Output</td><td>No</td><td>Chars written</td></tr>
+      <tr><td><code>scanf</code></td><td>Input</td><td>Yes (except arrays)</td><td>Items read</td></tr>
+    </table>
+  </div>
+
+  <!-- INITIALIZATION & IDENTIFIERS -->
+  <div class="node-card">
+    <h2>Initialization &amp; Identifiers</h2>
+    <div class="pair">
+      <div>
+        <p><strong>Allowed styles:</strong></p>
+        <p><code>int a = 2;</code> — copy init, C's only style.<br>
+        <code style="text-decoration:line-through;">int a(10);</code> <span class="flag flag-danger">✗ C++</span><br>
+        <code style="text-decoration:line-through;">int a{10};</code> <span class="flag flag-danger">✗ C++</span></p>
+      </div>
+      <div>
+        <p><span class="flag flag-warn">UB</span>Local vars hold garbage if uninitialized. Global/static vars auto-init to <code>0</code> / <code>NULL</code>.</p>
+      </div>
+    </div>
+    <p><strong>Naming:</strong> no keywords; letters/digits/<code>_</code> only; can't start with a digit; case-sensitive (<code>age != Age</code>).</p>
+    <table>
+      <tr><th>Convention</th><th>Example</th><th>Used for</th></tr>
+      <tr><td><code>snake_case</code></td><td><code>user_age</code></td><td>Variables, functions</td></tr>
+      <tr><td><code>camelCase</code></td><td><code>userAge</code></td><td>Mixed C/C++ codebases</td></tr>
+      <tr><td><code>UPPER_SNAKE</code></td><td><code>MAX_USERS</code></td><td>Macros, constants, enums</td></tr>
+      <tr><td><code>PascalCase</code></td><td><code>UserRecord</code></td><td>Structs, <code>typedef</code> types</td></tr>
+    </table>
+  </div>
+
+  <!-- DATA TYPES -->
+  <div class="node-card">
+    <h2>Data Types &amp; Sizes (typical)</h2>
+    <table>
+      <tr><th>Type</th><th>Size</th><th>Specifier / notes</th></tr>
+      <tr><td><code>_Bool</code> / <code>bool</code></td><td>1 byte</td><td>needs <code>&lt;stdbool.h&gt;</code> pre-C23</td></tr>
+      <tr><td><code>char</code></td><td>1 byte</td><td><code>%c</code> — stores ASCII int value</td></tr>
+      <tr><td><code>short</code></td><td>2 bytes</td><td><code>%hd</code></td></tr>
+      <tr><td><code>int</code></td><td>4 bytes</td><td><code>%d</code> / <code>%i</code> — most common</td></tr>
+      <tr><td><code>long</code></td><td>4 or 8 bytes</td><td><code>%ld</code></td></tr>
+      <tr><td><code>long long</code></td><td>8 bytes</td><td><code>%lld</code> — guaranteed 64-bit</td></tr>
+      <tr><td><code>float</code></td><td>4 bytes</td><td><code>%f</code> — ~6–7 decimal digits</td></tr>
+      <tr><td><code>double</code></td><td>8 bytes</td><td><code>%lf</code> — ~15–17 decimal digits</td></tr>
+      <tr><td><code>pointer (*)</code></td><td>4 or 8 bytes</td><td><code>%p</code></td></tr>
+      <tr><td><code>void</code></td><td>no size</td><td><code>void*</code> for generic pointer</td></tr>
+    </table>
+    <p><strong>Manual cast:</strong> <code>double r = (double)total / count;</code> forces float math.</p>
+    <p><strong>Promotion (high→low):</strong> <code>double &gt; float &gt; unsigned long long &gt; long long &gt; unsigned int &gt; int &gt; char/short</code></p>
+  </div>
+
+  <!-- KEYWORDS, EXPRESSIONS & SCOPE -->
+  <div class="node-card">
+    <h2>Keywords, Expressions &amp; Scope</h2>
+    <p><strong>No OOP:</strong> C has no <code>class</code>, <code>this</code>, <code>new</code>, <code>delete</code>, <code>public</code>, <code>private</code>, <code>virtual</code>.</p>
+    <p><strong>Qualifiers:</strong> <code>const</code> (read-only), <code>restrict</code> (sole-alias optimization hint), <code>volatile</code> (may change outside program control).</p>
+    <table>
+      <tr><th>Identifier</th><th>Scope</th><th>Lifetime / linkage</th></tr>
+      <tr><td>Local variable</td><td>Declaration → end of block</td><td>Automatic (stack)</td></tr>
+      <tr><td>Function parameter</td><td>Whole function body</td><td>Automatic (stack copy)</td></tr>
+      <tr><td>Global variable</td><td>Declaration → end of file</td><td>Static storage, auto-init <code>0</code></td></tr>
+      <tr><td><code>static</code> local var</td><td>Scoped to function</td><td>Persists across calls</td></tr>
+    </table>
+    <p><code>extern int g_val;</code> references a global defined elsewhere. <code>static</code> on a global/function gives <strong>internal linkage</strong> — hidden from other files.</p>
+  </div>
+
+  <!-- OPERATORS & PRECEDENCE -->
+  <div class="node-card">
+    <h2>Operator Precedence &amp; Associativity</h2>
+    <table>
+      <thead>
+        <tr><th style="width:8%;text-align:center;">#</th><th style="width:30%;">Operator</th><th>Description</th><th style="width:14%;">Assoc</th></tr>
+      </thead>
+      <tbody>
+        <tr><td style="text-align:center;font-weight:600;color:var(--bamboo);">1</td><td><code>++ --</code> <code>()</code> <code>[]</code> <code>. -&gt;</code></td><td>Postfix inc/dec, call, subscript, member access</td><td>L→R</td></tr>
+        <tr><td style="text-align:center;font-weight:600;color:var(--bamboo);">2</td><td><code>++ --</code> <code>! ~</code> <code>(type)</code> <code>* &amp;</code> <code>sizeof</code></td><td>Prefix, unary, cast, deref, address-of, sizeof</td><td>R→L</td></tr>
+        <tr><td style="text-align:center;font-weight:600;color:var(--bamboo);">3</td><td><code>* / %</code></td><td>Multiplicative</td><td>L→R</td></tr>
+        <tr><td style="text-align:center;font-weight:600;color:var(--bamboo);">4</td><td><code>+ -</code></td><td>Additive</td><td>L→R</td></tr>
+        <tr><td style="text-align:center;font-weight:600;color:var(--bamboo);">5</td><td><code>&lt;&lt; &gt;&gt;</code></td><td>Bitwise shift</td><td>L→R</td></tr>
+        <tr><td style="text-align:center;font-weight:600;color:var(--bamboo);">6</td><td><code>&lt; &lt;= &gt; &gt;=</code></td><td>Relational</td><td>L→R</td></tr>
+        <tr><td style="text-align:center;font-weight:600;color:var(--bamboo);">7</td><td><code>== !=</code></td><td>Equality</td><td>L→R</td></tr>
+        <tr><td style="text-align:center;font-weight:600;color:var(--bamboo);">8</td><td><code>&amp;</code></td><td>Bitwise AND</td><td>L→R</td></tr>
+        <tr><td style="text-align:center;font-weight:600;color:var(--bamboo);">9</td><td><code>^</code></td><td>Bitwise XOR</td><td>L→R</td></tr>
+        <tr><td style="text-align:center;font-weight:600;color:var(--bamboo);">10</td><td><code>|</code></td><td>Bitwise OR</td><td>L→R</td></tr>
+        <tr><td style="text-align:center;font-weight:600;color:var(--bamboo);">11</td><td><code>&amp;&amp;</code></td><td>Logical AND</td><td>L→R</td></tr>
+        <tr><td style="text-align:center;font-weight:600;color:var(--bamboo);">12</td><td><code>||</code></td><td>Logical OR</td><td>L→R</td></tr>
+        <tr><td style="text-align:center;font-weight:600;color:var(--bamboo);">13</td><td><code>?:</code></td><td>Ternary</td><td style="color:#8A5A1E;">R→L</td></tr>
+        <tr><td style="text-align:center;font-weight:600;color:var(--bamboo);">14</td><td><code>= += -= *= /= %= ...</code></td><td>Assignment</td><td style="color:#8A5A1E;">R→L</td></tr>
+        <tr><td style="text-align:center;font-weight:600;color:var(--bamboo);">15</td><td><code>,</code></td><td>Comma operator</td><td>L→R</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- STRINGS & POINTERS -->
+  <div class="node-card">
+    <h2>Strings &amp; Pointers</h2>
+    <p>C strings are 1D <code>char</code> arrays terminated by a mandatory null byte (<code>'\0'</code>).</p>
+    <pre>strncpy(dest, src, <span class="keyword">sizeof</span>(dest) - 1);
+dest[<span class="keyword">sizeof</span>(dest) - 1] = <span class="string">'\0'</span>; <span class="comment">// force null-termination</span>
+<span class="keyword">if</span> (strcmp(a, b) == 0) { ... } <span class="comment">// never use == on strings</span></pre>
+    <table>
+      <tr><th>Syntax</th><th>Pointer</th><th>Data</th></tr>
+      <tr><td><code>char* s</code></td><td>Mutable</td><td>Mutable</td></tr>
+      <tr><td><code>const char* s</code></td><td>Mutable</td><td>Read-only</td></tr>
+      <tr><td><code>char* const s</code></td><td>Fixed</td><td>Mutable</td></tr>
+      <tr><td><code>const char* const s</code></td><td>Fixed</td><td>Read-only</td></tr>
+    </table>
+    <pre><span class="type">int</span> *a, b;  <span class="comment">// trap: 'a' is int*, 'b' is plain int!</span>
+<span class="type">int</span> *a, *b; <span class="comment">// correct way to declare two pointers</span>
+<span class="type">int</span> (*op)(<span class="type">int</span>, <span class="type">int</span>) = add; <span class="comment">// function pointer</span></pre>
+  </div>
+
+  <!-- FLOW CONTROL & NUMERICAL SYSTEMS -->
+  <div class="node-card">
+    <h2>Flow Control, Loops &amp; Bases</h2>
+    <div class="pair">
+      <div>
+        <p><strong>Loop types:</strong></p>
+        <ul>
+          <li><code>while (c)</code> — checks first, min runs 0</li>
+          <li><code>do {} while (c);</code> — checks last, min runs 1</li>
+          <li><code>for (i; c; s)</code> — checks first, min runs 0</li>
+        </ul>
+        <p><code>break</code> exits the loop/switch. <code>continue</code> jumps to the next check.</p>
+      </div>
+      <div>
+        <table>
+          <tr><th>Base</th><th>Prefix</th><th>Format</th></tr>
+          <tr><td>Octal</td><td><code>0</code></td><td><code>%o</code></td></tr>
+          <tr><td>Hex</td><td><code>0x</code></td><td><code>%x</code> / <code>%X</code></td></tr>
+          <tr><td>Binary</td><td><code>0b</code></td><td><code>%b</code> <span class="flag flag-tip">C23</span></td></tr>
+        </table>
+        <p>The <code>#</code> flag (e.g. <code>%#X</code>) prefixes automatically.</p>
+      </div>
+    </div>
+    <p><span class="flag flag-tip">Rule</span><code>switch(expr)</code> needs an integral type (<code>int</code>, <code>char</code>, <code>bool</code>, <code>enum</code>). Always <code>break;</code> unless you intend to fall through.</p>
+  </div>
+
+  <!-- FILE I/O -->
+  <div class="node-card">
+    <h2>File I/O</h2>
+    <pre>FILE* fp = fopen(<span class="string">"data.txt"</span>, <span class="string">"w"</span>);
+<span class="keyword">if</span> (fp == NULL) { perror(<span class="string">"Error"</span>); <span class="keyword">return</span> 1; }
+fprintf(fp, <span class="string">"Writing bytes.\n"</span>);
+fclose(fp);</pre>
+    <table>
+      <tr><th>Mode</th><th>Read</th><th>Write</th><th>Existing file</th><th>If missing</th></tr>
+      <tr><td><code>"r"</code> / <code>"r+"</code></td><td>Yes / Yes</td><td>No / Yes</td><td>Preserved</td><td><code>NULL</code> error</td></tr>
+      <tr><td><code>"w"</code> / <code>"w+"</code></td><td>No / Yes</td><td>Yes / Yes</td><td>Truncated to 0</td><td>Created</td></tr>
+      <tr><td><code>"a"</code> / <code>"a+"</code></td><td>No / Yes</td><td>Append</td><td>Preserved, appended</td><td>Created</td></tr>
+    </table>
+  </div>
+
+  <!-- BIG O -->
+  <div class="node-card">
+    <h2>Performance Table</h2>
+    <table>
+      <tr><th>Big O</th><th>Complexity</th><th>Example</th></tr>
+      <tr><td><code>O(1)</code></td><td>Constant</td><td>Array index access</td></tr>
+      <tr><td><code>O(log N)</code></td><td>Logarithmic</td><td>Binary search</td></tr>
+      <tr><td><code>O(N)</code></td><td>Linear</td><td>String length loop</td></tr>
+    </table>
+  </div>
+
+</div>
+
+<div id="footer"></div>
+
+</body>
+</html>

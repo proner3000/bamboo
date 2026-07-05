@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Access Gateway — Bamboo Coding</title>
+  <link rel="stylesheet" href="bambooTheme.css">
+  <style>
+    .auth-view { display: flex; align-items: center; justify-content: center; min-height: calc(100vh - 120px); }
+    .auth-shell { background: var(--white); border: 1px solid var(--node-border); border-radius: var(--radius-md); padding: 2.5rem; width: 100%; max-width: 400px; }
+    .input-wrapper { margin-bottom: 1.25rem; }
+    .input-wrapper label { display: block; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; margin-bottom: 0.4rem; color: var(--ink-soft); }
+    .input-field { width: 100%; padding: 0.6rem; border: 1px solid var(--node-border); border-radius: var(--radius-sm); font-size: 0.9rem; outline: none; }
+    .input-field:focus { border-color: var(--bamboo); }
+    .btn-auth-submit { width: 100%; background: var(--bamboo); color: var(--white); border: none; padding: 0.75rem; border-radius: var(--radius-sm); font-weight: 500; cursor: pointer; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+  <div class="auth-view">
+    <div class="auth-shell">
+      <h2 class="title-serif" style="font-size: 1.8rem; margin-bottom: 1.5rem;">Initialize Stalk Sessions</h2>
+      <form action="dashboard.html">
+        <div class="input-wrapper">
+          <label>Authentication Email</label>
+          <input type="email" class="input-field" required>
+        </div>
+        <div class="input-wrapper">
+          <label>Security Phrase</label>
+          <input type="password" class="input-field" required>
+        </div>
+        <button type="submit" class="btn-auth-submit">Enter Platform Session</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+  .category-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 2.5rem 0 1.2rem 0;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .category-title:first-of-type {
+    margin-top: 1rem;
+  }
+
+  /* Expandable Merge Card Structure */
+  .lesson-merge-card {
+    background: var(--white);
+    border: 1px solid var(--node-border);
+    border-radius: var(--radius-md, 12px);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .lesson-merge-card:hover {
+    border-color: var(--bamboo-light);
+  }
+  .lesson-merge-card.is-locked {
+    opacity: 0.6;
+  }
+  .lesson-merge-card.is-locked:hover {
+    border-color: var(--node-border);
+  }
+  .lesson-merge-card.is-locked .lesson-card-head {
+    cursor: default;
+  }
+  .lesson-merge-card.is-locked .lesson-chevron {
+    color: var(--ink-muted);
+  }
+
+  .lesson-card-head {
+    padding: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    user-select: none;
+    position: relative;
+  }
+  .lesson-card-head h3 { font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: 0.4rem; }
+  .lesson-card-head p  { font-size: 0.82rem; color: var(--ink-muted); line-height: 1.5; margin-bottom: 1rem; }
+
+  .track-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    background: var(--bamboo-pale);
+    color: var(--bamboo);
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+  .track-meta { display: flex; gap: 1rem; font-size: 0.75rem; color: var(--ink-muted); }
+  .track-bar  { position: absolute; bottom: 0; left: 0; height: 3px; width: 100%; background: var(--bamboo-pale); }
+  .track-bar-fill { height: 100%; background: var(--bamboo); border-radius: 0 2px 0 0; }
+
+  .lesson-chevron {
+    color: var(--bamboo-light);
+    transition: transform 0.2s, color 0.2s;
+    font-size: 1rem;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+  .lesson-merge-card.is-open .lesson-chevron { transform: rotate(90deg); color: var(--bamboo); }
+
+  /* Body Content and Tabs Drawer */
+  .lesson-card-body {
+    display: none;
+    border-top: 1px solid var(--node-border);
+    padding: 1.5rem;
+    background: var(--cream);
+  }
+  .lesson-merge-card.is-open .lesson-card-body { display: block; }
+
+  .lesson-tabs {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid var(--node-border);
+  }
+  .lesson-tab {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    background: none;
+    border: none;
+    padding: 0.55rem 0.2rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+  }
+  .lesson-tab:hover, .lesson-tab.is-active { color: var(--bamboo); }
+  .lesson-tab.is-active::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -1px;
+    height: 2px;
+    background: var(--bamboo);
+    border-radius: 2px 2px 0 0;
+  }
+
+  .lesson-pane { display: none; }
+  .lesson-pane.is-active { display: block; }
+
+  /* Quick Resource Links styling */
+  .resource-link-wrapper {
+    background: var(--white);
+    border: 1px solid var(--node-border);
+    border-radius: var(--radius-sm, 6px);
+    padding: 1rem;
+  }
+  .resource-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--bamboo);
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .resource-btn:hover {
+    text-decoration: underline;
+  }
+  .resource-btn.is-disabled {
+    color: var(--ink-muted);
+    cursor: default;
+    pointer-events: none;
+  }
+
+  /* Notes layout styling */
+  .notes-pane h4 { font-size: 0.85rem; font-weight: 600; color: var(--ink); margin: 1.1rem 0 0.4rem; }
+  .notes-pane h4:first-child { margin-top: 0; }
+  .notes-pane p, .notes-pane li { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.7; }
+  .notes-pane ul { padding-left: 1.2rem; margin-bottom: 0.6rem; }

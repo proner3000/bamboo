@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Hub — Bamboo Coding</title>
+  <link rel="stylesheet" href="/css/bamboo.css">
+  <script src="/jsFiles/layout_Wrapper.js" defer ></script>
+  <script src="/jsFiles/qr.js" defer ></script>
+
+  <style>
+    .channel-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 3rem; }
+    .channel-box { background: var(--white); border: 1px solid var(--node-border); padding: 1.5rem; border-radius: var(--radius-md); text-align: center; text-decoration: none; display: block; }
+    .channel-box:hover { border-color: var(--bamboo); }
+    .feed-container { max-width: 700px; }
+    .post-node { background: var(--white); border: 1px solid var(--node-border); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1rem; }
+    .post-user { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--bamboo); margin-bottom: 0.5rem; display: block; }
+  </style>
+</head>
+<body>
+  
+  <div id="header"></div>
+
+  <main class="container">
+    <div class="header-block">
+      <h1 class="title-serif">Learners Guild</h1>
+    </div>
+
+    <div class="channel-row">
+      <a href="https://www.youtube.com/@Bamboograss-001" class="channel-box"><h4>YouTube Channel</h4><p style="font-size:0.75rem; color:var(--ink-muted);">Video Resource base</p></a>
+      <a href="https://www.facebook.com/groups/988923610792264" class="channel-box"><h4>Facebook Network</h4><p style="font-size:0.75rem; color:var(--ink-muted);">Community Announcements</p></a>
+      <a href="https://chat.whatsapp.com/EZtN4J8byGmGm0iXfLOc2U" class="channel-box"><h4>WhatsApp Portal</h4><p style="font-size:0.75rem; color:var(--ink-muted);">Instant Technical Groups</p></a>
+    </div>
+
+    <div id="community"></div> 
+    
+    
+  </main>
+  <div id="footer"></div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-const a = 'multiFiles/nav.html'
+const a = '/multiFiles/nav.html'
 function replaceheaderContent() {
     fetch(a)
         .then(response => response.text())
@@ -9,7 +9,7 @@ function replaceheaderContent() {
 }
 replaceheaderContent();
 
-const b = 'multiFiles/footer.html'
+const b = '/multiFiles/footer.html'
 function replaceContent() {
     fetch(b)
         .then(response => response.text())

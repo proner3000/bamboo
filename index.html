@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,44 +7,252 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="css/nav.css">
-<link rel="stylesheet" href="css/bambooTheme.css">
-
-<script src="jsFiles/layout_Wrapper.js" defer></script>
-<script src="jsFiles/time.js"></script>
-<style>
-        main {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f4f7f5;
-            color: #2c3e50;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: #2e7d32; /* A nice bamboo green color */
-        }
-        p {
-            font-size: 1.2rem;
-            color: #7f8c8d;
-        }
-    </style></head>
+<link rel="stylesheet" href="/css/bamboo.css">
+<script src="/jsFiles/layout_Wrapper.js" defer ></script>
+<script src="/jsFiles/qr.js" defer ></script>
+</head>
 <body>
 
   <div id="header"></div>
-  <main><h1>Bamboo Coding</h1>
-    <p>Work in progress.Target Deployment in: <br>
-    <span id="countdown" >Calculating...</span>
-</p>
-</main>
-    <div id="footer"></div>
+
+<div class="hero">
+  <div class="hero-text">
+    <h1>Code grows<br>like <em>bamboo</em></h1>
+    <p>Short, focused tutorials that stack into real skills. No fluff — just concepts, code, and practice that compounds over time.</p>
+    <div class="hero-btns">
+      <a href="#tracks" class="btn-primary">Start free today</a>
+      <a href="/html/tracks.html" class="btn-secondary">Browse tracks →</a>
+    </div>
+  </div>
+  <div class="hero-terminal" role="img" aria-label="Terminal showing a Python lesson example">
+    <div class="terminal-bar">
+      <div class="dot d-red"></div>
+      <div class="dot d-yellow"></div>
+      <div class="dot d-green"></div>
+      <span class="terminal-path">~/bamboo/lesson-01</span>
+    </div>
+    <div class="terminal-body">
+      <div><span class="t-muted">$</span> <span class="t-green">bamboo</span> <span class="t-white">start</span></div>
+      <div><span class="t-muted">→</span> <span class="t-cyan">Loading</span> <span class="t-white">track: C/C++ Fundamentals</span></div>
+      <div><span class="t-muted">→</span> <span class="t-yellow">Lesson 1</span><span class="t-white">: Variables &amp; types</span></div>
+      <br>
+      <div><span class="t-muted"># Define your first variable</span></div>
+      <div><span class="t-green">int </span></span><span class="t-yellow">name</span> <span class="t-white">= </span><span class="t-cyan">"bamboo"</span></div>
+      <div><span class="t-green">int </span><span class="t-yellow">growth</span> <span class="t-white">= </span><span class="t-cyan">100</span><span class="t-muted"></span></div>
+      <br>
+      <div><span class="t-green">printf</span><span class="t-white">(</span><span class="t-cyan">"%s grows %d cm",name,growth</span><span class="t-white">)</span></div>
+      <div><span class="t-muted"># bamboo grows 100cm</span></div>
+      <br>
+      <div><span class="t-muted">$</span> <span class="cursor"></span></div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-num">1</div><div class="stat-lbl">lessons</div></div>
+    <div class="stat-card"><div class="stat-num">1</div><div class="stat-lbl">tracks</div></div>
+    <div class="stat-card"><div class="stat-num">1</div><div class="stat-lbl">instructors</div></div>
+    <div class="stat-card"><div class="stat-num">free</div><div class="stat-lbl">to start</div></div>
+  </div>
+</div>
+
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-node">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <rect x="6" y="1" width="3" height="5" rx="1" fill="#2C5530"/>
+      <rect x="6" y="7.5" width="3" height="5" rx="1" fill="#2C5530"/>
+      <path d="M5 3 Q3 5 4 7" stroke="#8FAF7E" stroke-width="1" stroke-linecap="round" fill="none"/>
+    </svg>
+  </div>
+  <div class="divider-line"></div>
+</div>
+
+<div class="section" id="tracks">
+  <div class="section-title">Pick your path</div>
+  <p class="section-sub">Each track is a sequence of tight lessons. Finish one node, unlock the next — like bamboo growing segment by segment.</p>
+  
+  <div class="tracks-grid">
+
+    <a href="/html/lesson.html#c-fundamentals" class="track-card-link">
+      <div class="track-card">
+        <div class="track-arrow">↗</div>
+        <div class="track-tag">01 · BEGINNER</div>
+        <h3>C/C++ Fundamentals</h3>
+        <p>Variables, loops, functions, and files. The ground layer everything else grows from.</p>
+        <div class="track-meta"><span>Shipping</span></div>
+        <div class="track-bar"><div class="track-bar-fill" style="width:100%"></div></div>
+      </div>
+    </a>
+
+    <div class="track-card" style="border-style:dashed;opacity:0.6;cursor:default">
+      <div class="track-tag">02 · COMING SOON</div>
+      <h3>Web Dev with HTML &amp; CSS</h3>
+      <p>Build pages that work and look right. Layouts, flexbox, and responsive design.</p>
+      <div class="track-meta"><span>Active</div>
+      <div class="track-bar"><div class="track-bar-fill" style="width:0%"></div></div>
+    </div>
+    <div class="track-card" style="border-style:dashed;opacity:0.6;cursor:default">
+      <div class="track-tag">03 · COMING SOON</div>
+      <h3>JavaScript &amp; the DOM</h3>
+      <p>Make pages interactive. Events, fetch, async/await, and real projects.</p>
+      <div class="track-meta"><span>Queued</div>
+      <div class="track-bar"><div class="track-bar-fill" style="width:0%"></div></div>
+    </div>
+    <div class="track-card" style="border-style:dashed;opacity:0.6;cursor:default">
+      <div class="track-tag">04 · COMING SOON</div>
+      <h3>APIs &amp; Backend with FastAPI</h3>
+      <p>Build REST APIs, connect databases, handle auth. Ship real back-end services.</p>
+      <div class="track-meta"><span>Queued</div>
+      <div class="track-bar"><div class="track-bar-fill" style="width:0%"></div></div>
+    </div>
+    <div class="track-card" style="border-style:dashed;opacity:0.6;cursor:default">
+      <div class="track-tag">05 · COMING SOON</div>
+      <h3>Git &amp; Team Workflows</h3>
+      <p>Branching, pull requests, rebasing, and working well with other developers.</p>
+      <div class="track-meta"><span>Queued</div>
+      <div class="track-bar"><div class="track-bar-fill" style="width:0%"></div></div>
+    </div>
+    <div class="track-card" style="border-style:dashed;opacity:0.6;cursor:default">
+      <div class="track-tag">06 · COMING SOON</div>
+      <h3>Data with Pandas &amp; Numpy</h3>
+      <p>Analyze, clean, and visualize data with Python's scientific stack.</p>
+      <div class="track-meta"><span>Queued</span></div>
+      <div class="track-bar"><div class="track-bar-fill" style="width:0%"></div></div>
+    </div>
+  </div>
+</div>
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-node">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <rect x="6" y="1" width="3" height="5" rx="1" fill="#2C5530"/>
+      <rect x="6" y="7.5" width="3" height="5" rx="1" fill="#2C5530"/>
+      <path d="M5 3 Q3 5 4 7" stroke="#8FAF7E" stroke-width="1" stroke-linecap="round" fill="none"/>
+    </svg>
+  </div>
+  <div class="divider-line"></div>
+</div>
+
+<div class="section" id="lessons">
+  <div class="section-title">One segment at a time</div>
+  <p class="section-sub">Each lesson is structured like a bamboo stalk — a tight node of concept, then code, then practice.</p>
+  <div>
+    <div class="stalk">
+      <div class="stalk-line">
+        <div class="stalk-node active">01</div>
+        <div class="stalk-segment"></div>
+      </div>
+      <div class="stalk-content">
+        <h3>Watch the concept (2–5 min)</h3>
+        <p>A focused video or annotated code walkthrough. No 40-minute lectures — just the idea, clean and concrete.</p>
+        <div class="lesson-pills">
+          <span class="pill">concept first</span>
+          <span class="pill">visual examples</span>
+          <span class="pill">real use cases</span>
+        </div>
+      </div>
+    </div>
+    <div class="stalk">
+      <div class="stalk-line">
+        <div class="stalk-node active">02</div>
+        <div class="stalk-segment"></div>
+      </div>
+      <div class="stalk-content">
+        <h3>Read the code breakdown</h3>
+        <p>Every snippet explained line-by-line, with the "why" not just the "how." Copy it, run it, break it on purpose.</p>
+        <div class="code-snippet">
+<span class="t-muted"># A function is a named block of reusable code</span><br>
+<span class="t-cyan">const char<span class="t-white">*</span></span> <span class="t-yellow">askAboutWeather</span><span class="t-cyan">(const char<span class="t-white">*</span> a) </span> <span class="t-white">{</span> <br>
+<span class="t-white">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="t-green">return</span> <span class="t-cyan">a<span class="t-white">;</span> <span class="t-white">}</span> <br>
+<br>
+<span class="t-muted"># Call it with any name</span><br>
+<span class="t-green">printf</span><span class="t-white">(askAboutWeather(</span><span class="t-cyan">"how is the weather<span class="t-white">?</span>"</span><span class="t-white">))</span>
+        </div>
+      </div>
+    </div>
+    <div class="stalk">
+      <div class="stalk-line">
+        <div class="stalk-node active">03</div>
+        <div class="stalk-segment"></div>
+      </div>
+      <div class="stalk-content">
+        <h3>Complete the challenge</h3>
+        <p>A small exercise you solve in the browser editor. No skipping — you only move forward when your code passes.</p>
+        <div class="lesson-pills">
+          <span class="pill">auto-graded</span>
+          <span class="pill">browser editor</span>
+          <span class="pill">hints available</span>
+        </div>
+      </div>
+    </div>
+    <div class="stalk">
+      <div class="stalk-line">
+        <div class="stalk-node">04</div>
+      </div>
+      <div class="stalk-content">
+        <h3>Unlock the next node</h3>
+        <p>Progress is visible. Each completed lesson adds a segment to your stalk — watch your track fill up over time.</p>
+      </div>
+    </div>
+    <div class="stalk">
+      <div class="stalk-content">
+        <h3>* In Dynamic Server</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-node">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <rect x="6" y="1" width="3" height="5" rx="1" fill="#2C5530"/>
+      <rect x="6" y="7.5" width="3" height="5" rx="1" fill="#2C5530"/>
+      <path d="M5 3 Q3 5 4 7" stroke="#8FAF7E" stroke-width="1" stroke-linecap="round" fill="none"/>
+    </svg>
+  </div>
+  <div class="divider-line"></div>
+</div>
+
+<div class="section" id="enthusiast-profile">
+  <div class="section-title">Code Enthusiast</div>
+  <p class="section-sub">Building, breaking, and learning out in the open. Always tinkering with new stacks and side projects.</p>
+  
+  <div class="instructors-grid">
+    <div class="instructor-card">
+      <div class="avatar">J</div>
+      <div class="instructor-info">
+        <h3>Khushan Khadka</h3>
+        <div class="role">C/C++ . mern . api</div>
+        <p>Obsessed with system optimization and automation. Currently configuring a local homelab cluster and diving deep into backend performance.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-node">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <rect x="6" y="1" width="3" height="5" rx="1" fill="#2C5530"/>
+      <rect x="6" y="7.5" width="3" height="5" rx="1" fill="#2C5530"/>
+      <path d="M5 3 Q3 5 4 7" stroke="#8FAF7E" stroke-width="1" stroke-linecap="round" fill="none"/>
+    </svg>
+  </div>
+  <div class="divider-line"></div>
+</div>
+
+<div id="community"></div>
+
+<div class="cta-band">
+  <h2>Start growing today.</h2>
+  <p>Free forever, No account required to begin.</p>
+  <a href="#tracks" class="btn-white">Open lesson one →</a>
+</div>
+
+<div id="footer"></div>
 
 </body>
 </html>
