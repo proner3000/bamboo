@@ -6,6 +6,7 @@
     <title>Lessons — Bamboo Coding</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
     <link
       href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
@@ -13,6 +14,7 @@
     <link rel="stylesheet" href="/css/bamboo.css" />
     <link rel="stylesheet" href="/css/lesson.css" />
     <script src="/jsFiles/layout_Wrapper.js" defer></script>
+    <script src="/jsFiles/lesson.js" defer></script>
   </head>
   <body>
     <div id="header"></div>
@@ -54,6 +56,9 @@
                 >
                   Video Tutorial
                 </button>
+                <button class="lesson-tab" onclick="switchTab(this, 'links')">
+                  Links
+                </button>
                 <button class="lesson-tab" onclick="switchTab(this, 'notes')">
                   Notes Document
                 </button>
@@ -73,16 +78,95 @@
                     target="_blank"
                     rel="noopener"
                   >
-                    Launch Video Tutorial Asset ↗
-                  </a>
-                </div>
+                  Launch Video Tutorial Asset ↗
+                </a>
               </div>
+            </div>
+            
+            <div class="lesson-pane" data-pane="links">
+        <div class="resource-link-wrapper">
+          
+          <!-- OS Selector Sub-Tabs -->
+          <div class="os-selector-tabs" style="display: flex; gap: 8px; justify-content: center; margin-bottom: 16px;">
+            <button class="os-btn is-active" onclick="switchOS(this, 'win')">🪟 Windows</button>
+            <button class="os-btn" onclick="switchOS(this, 'mac')">🍎 macOS</button>
+            <button class="os-btn" onclick="switchOS(this, 'linux')">🐧 Linux</button>
+          </div>
+
+          <!-- Windows Tools Pane -->
+          <div class="os-pane is-active" data-os="win">
+            <a
+              class="resource-btn highlight-btn"
+              href="https://github.com/bamboograss001-lab/BunchOfScript/releases/download/c_auto_setup/C_Environment_Setup.bat"
+              target="_blank"
+              rel="noopener"
+            >
+              Direct Automated C Environment Setup  ↗
+            </a>
+            </br></br><div class="resource-btn" style="text-decoration: none; text-emphasis: center;"">OR </div>
+            </br></br><a
+              class="resource-btn"
+              href="https://code.visualstudio.com/"
+              target="_blank"
+              rel="noopener"
+            >
+              Visual Studio Code ↗
+            </a></br>
+            <a
+              class="resource-btn"
+              href="https://github.com/brechtsanders/winlibs_mingw/releases/download/16.1.0posix-14.0.0-msvcrt-r3/winlibs-x86_64-posix-seh-gcc-16.1.0-mingw-w64msvcrt-14.0.0-r3.zip"
+              target="_blank"
+              rel="noopener"
+            >
+              Standalone MinGW-w64 Compiler (GCC 16.1) ↗
+            </a>
+          </div>
+
+          <!-- macos Tools Pane -->
+          <div class="os-pane" data-os="mac" style="display: none;">
+            <a
+              class="resource-btn"
+              href="https://code.visualstudio.com/"
+              target="_blank"
+              rel="noopener"
+            >
+              Visual Studio Code (macOS) ↗
+            </a>
+</br></br>
+            <div class="resource-btn" style="text-decoration: none; text-align: center;">OR</div>
+            <div class="code-block-wrapper" style="position: relative; margin-top: 12px;">
+              <pre style="padding: 12px; border-radius: 6px; font-family: monospace; overflow-x: auto; margin: 0;"><code>xcode-select --install</code></pre>
+              <button class="copy-btn" onclick="copyCode(this)" style="position: absolute; top: 6px; right: 6px; background: #333; color: #fff; border: 1px solid #555; border-radius: 4px; padding: 4px 8px; font-size: 0.75rem; cursor: pointer;">Copy</button>
+            </div>
+          </div>
+
+          <!-- Linux Tools Pane -->
+          <div class="os-pane" data-os="linux" style="display: none;">
+            <a
+              class="resource-btn"
+              href="https://code.visualstudio.com/"
+              target="_blank"
+              rel="noopener"
+            >
+              Visual Studio Code (Linux .deb / .rpm) ↗
+            </a>
+            </br></br>
+            <div class="resource-btn" style="text-decoration: none; text-align: center;">OR</div>
+            <div class="code-block-wrapper" style="position: relative; margin-top: 12px;">
+              <pre style="padding: 12px; border-radius: 6px; font-family: monospace; overflow-x: auto; margin: 0;"><code>wget -O vscode.deb "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" </br>sudo apt update </br>sudo apt install -y ./vscode.deb </br>rm vscode.deb</br>
+              </code></pre>
+              <button class="copy-btn" onclick="copyCode(this)" style="position: absolute; top: 6px; right: 6px; background: #333; color: #fff; border: 1px solid #555; border-radius: 4px; padding: 4px 8px; font-size: 0.75rem; cursor: pointer;">Copy</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
 
               <div class="lesson-pane" data-pane="notes">
                 <div class="resource-link-wrapper">
                   <a
                     class="resource-btn"
-                    href="https://drive.google.com/drive/folders/1hHdZnHINKL4jfIFJVc-uTxldMHr2vP8g?usp=sharing"
+                    href="https://github.com/bamboograss001-lab/learningC/"
                     target="_blank"
                     rel="noopener"
                   >
@@ -1252,28 +1336,5 @@
     </div>
 
     <div id="footer"></div>
-
-    <script>
-      function toggleLesson(headEl) {
-        const card = headEl.closest(".lesson-merge-card");
-        if (card.classList.contains("is-locked")) return;
-        card.classList.toggle("is-open");
-      }
-
-      function switchTab(btn, paneName) {
-        event.stopPropagation(); // Prevents collapsing the master card when clicking tabs
-        const container = btn.closest(".lesson-card-body");
-        container
-          .querySelectorAll(".lesson-tab")
-          .forEach((t) => t.classList.remove("is-active"));
-        container
-          .querySelectorAll(".lesson-pane")
-          .forEach((p) => p.classList.remove("is-active"));
-        btn.classList.add("is-active");
-        container
-          .querySelector(`.lesson-pane[data-pane="${paneName}"]`)
-          .classList.add("is-active");
-      }
-    </script>
   </body>
 </html>
